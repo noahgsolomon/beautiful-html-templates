@@ -1,0 +1,51 @@
+{
+  "slug": "fal-style",
+  "name": "fal Style",
+  "tagline": "fal's signal-dense visual system: Focal grotesk, technical mono labels, ghost grid paper, and electric purple/lime/pink/cyan blocks.",
+  "mood": [
+    "electric",
+    "technical",
+    "confident",
+    "precise",
+    "future-facing"
+  ],
+  "occasion": [
+    "general company presentation",
+    "product strategy",
+    "technical architecture review",
+    "startup pitch",
+    "market analysis",
+    "roadmap and planning",
+    "research synthesis"
+  ],
+  "tone": [
+    "direct",
+    "analytical",
+    "high-energy",
+    "graphic",
+    "opinionated"
+  ],
+  "formality": "medium",
+  "density": "high",
+  "palette": {
+    "paper": "#FEFDFF",
+    "ink": "#09090B",
+    "purple": "#681DE4",
+    "lime": "#ADFF00",
+    "pink": "#EB064A",
+    "cyan": "#99E5FF",
+    "lavender": "#F3ECFE",
+    "description": "near-white engineering paper with black structure and four electric signal colors: fal purple, acid lime, hot pink, and cyan"
+  },
+  "typography": {
+    "display": "Focal Bold",
+    "body": "Focal Regular / Medium",
+    "mono": "Consolas",
+    "style": "extra-large compressed grotesk statements paired with letter-spaced technical mono labels and restrained humanist body copy"
+  },
+  "scheme": "mixed",
+  "best_for": "General-purpose decks that need to feel unmistakably fal: technical but not sterile, energetic without decoration, and capable of moving between sparse manifesto statements and dense analytical diagrams. Especially strong for product strategy, architecture, market comparisons, roadmaps, customer evidence, and internal decision decks.",
+  "avoid_for": "Quiet literary narratives, traditional institutional reports, or soft lifestyle storytelling—the electric palette, huge Focal headlines, and technical grid insist on a sharp product-and-systems voice.",
+  "slide_count": 12,
+  "navigation": "deck-stage runtime (arrow keys, space, PgUp/PgDn, Home/End)"
+}

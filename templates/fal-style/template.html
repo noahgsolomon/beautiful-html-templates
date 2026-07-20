@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>fal Style — Presentation Template</title>
+<script src="deck-stage.js"></script>
+<style>
+  @font-face { font-family: "Focal"; src: url("fonts/Focal-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Focal"; src: url("fonts/Focal-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Focal"; src: url("fonts/Focal-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Focal"; src: url("fonts/Focal-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+
+  :root {
+    --paper: #FEFDFF;
+    --white: #FFFFFF;
+    --ink: #09090B;
+    --graphite: #5F5B66;
+    --purple: #681DE4;
+    --purple-light: #AB77FF;
+    --lavender: #F3ECFE;
+    --lime: #ADFF00;
+    --lime-soft: #E6FFB3;
+    --pink: #EB064A;
+    --pink-soft: #FDEEF4;
+    --cyan: #99E5FF;
+    --green: #145C36;
+    --rule: rgba(9, 9, 11, 0.72);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #141416; }
+  body { color: var(--ink); font-family: "Focal", Arial, sans-serif; }
+  deck-stage { background: #141416; }
+  h1, h2, h3, h4, p, ul, ol { margin: 0; }
+
+  section.slide {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(rgba(104,29,228,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(104,29,228,.055) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+  section.slide.dark { background: var(--ink); color: var(--white); }
+  section.slide.purple { background: var(--purple); color: var(--white); }
+
+  .kicker, .page-count {
+    position: absolute;
+    top: 48px;
+    z-index: 20;
+    font-family: Consolas, "SFMono-Regular", ui-monospace, monospace;
+    font-size: 18px;
+    letter-spacing: .18em;
+    line-height: 1;
+    text-transform: lowercase;
+  }
+  .kicker { left: 78px; display: flex; align-items: center; gap: 13px; color: var(--graphite); }
+  .page-count { right: 78px; color: var(--ink); }
+  .dark .kicker, .dark .page-count, .purple .kicker, .purple .page-count { color: rgba(255,255,255,.8); }
+  .marker { display: inline-block; width: 13px; height: 13px; flex: 0 0 auto; background: var(--accent, var(--purple)); }
+  .period { display: inline-block; width: .18em; height: .18em; margin-left: .06em; background: var(--accent, var(--purple)); vertical-align: .04em; }
+
+  .display-hero { font-size: 156px; line-height: .88; letter-spacing: -.055em; font-weight: 700; }
+  .display-statement { font-size: 104px; line-height: .91; letter-spacing: -.048em; font-weight: 700; }
+  .display-section { font-size: 68px; line-height: .95; letter-spacing: -.035em; font-weight: 700; }
+  .title { font-size: 42px; line-height: 1.02; letter-spacing: -.025em; font-weight: 700; }
+  .body { font-size: 26px; line-height: 1.35; color: var(--graphite); }
+  .body-lg { font-size: 34px; line-height: 1.28; color: var(--graphite); }
+  .mono { font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; }
+  .mono-label { font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 18px; letter-spacing: .18em; }
+  .mono-small { font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 14px; letter-spacing: .12em; line-height: 1.35; }
+  .eyebrow { font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 18px; letter-spacing: .16em; line-height: 1.25; }
+  .accent { color: var(--accent, var(--purple)); }
+  .muted { color: var(--graphite); }
+  .strong { font-weight: 700; color: var(--ink); }
+
+  .frame { border: 1px solid var(--rule); background: rgba(255,255,255,.7); }
+  .band-head { height: 48px; padding: 0 22px; display: flex; align-items: center; gap: 12px; background: var(--ink); color: var(--white); }
+  .band-head.tint { background: var(--lavender); color: var(--ink); }
+  .band-head .marker { width: 12px; height: 12px; }
+  .tag { display: inline-flex; align-items: center; min-height: 35px; padding: 6px 13px; border: 1px solid currentColor; font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 14px; letter-spacing: .1em; background: var(--white); }
+  .tag.active { color: var(--ink); background: var(--lime); }
+  .rule { height: 1px; background: var(--rule); }
+  .quote-mark { font-size: 100px; line-height: .55; font-weight: 700; letter-spacing: -.06em; }
+  .quote-copy { font-size: 34px; line-height: 1.24; font-weight: 500; }
+  .attribution { font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 17px; letter-spacing: .14em; line-height: 1.55; }
+
+  /* 01 · cover */
+  .s-cover { --accent: var(--lime); }
+  .s-cover .cover-inner { position: absolute; left: 84px; top: 330px; width: 900px; }
+  .s-cover .cover-label { display: flex; align-items: center; gap: 13px; margin-bottom: 44px; color: var(--graphite); }
+  .s-cover h1 { width: 1050px; }
+  .s-cover h1 .purple-word { color: var(--purple); }
+  .s-cover .dek { width: 780px; margin-top: 50px; font-size: 36px; line-height: 1.3; color: var(--graphite); }
+  .s-cover .dek strong { color: var(--ink); }
+  .s-cover .footer-rule { position: absolute; left: 84px; right: 84px; bottom: 64px; height: 1px; background: var(--rule); }
+  .s-cover .micro-squares span { position: absolute; width: 13px; height: 13px; }
+  .s-cover .micro-squares span:nth-child(1) { right: 390px; top: 360px; background: var(--pink); }
+  .s-cover .micro-squares span:nth-child(2) { right: 160px; top: 540px; background: var(--cyan); }
+  .s-cover .micro-squares span:nth-child(3) { right: 310px; bottom: 100px; background: var(--purple); }
+
+  /* 02 · problem and answer */
+  .s-problem { --accent: var(--purple); }
+  .s-problem .thesis { position: absolute; left: 96px; right: 96px; top: 105px; height: 235px; border-left: 7px solid var(--purple); display: grid; grid-template-columns: 1fr 230px; }
+  .s-problem .thesis-main { padding: 28px 34px; }
+  .s-problem .thesis-main h2 { margin-top: 20px; font-size: 47px; line-height: 1.05; letter-spacing: -.03em; }
+  .s-problem .thesis-stat { border-left: 1px solid rgba(9,9,11,.18); padding: 22px 26px; display: flex; flex-direction: column; justify-content: center; }
+  .s-problem .thesis-stat strong { font-size: 64px; line-height: .9; letter-spacing: -.045em; }
+  .s-problem .answer-head { position: absolute; left: 96px; top: 368px; }
+  .s-problem .answer-head h3 { margin-top: 12px; font-size: 40px; letter-spacing: -.03em; }
+  .s-problem .answer-grid { position: absolute; left: 96px; right: 96px; top: 455px; height: 555px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 285px 270px; }
+  .s-problem .capture, .s-problem .code { border: 1px solid var(--rule); }
+  .s-problem .capture { padding: 65px 24px 24px; border-right: 0; position: relative; }
+  .s-problem .capture .tags { display: flex; gap: 12px; margin-bottom: 22px; }
+  .s-problem .capture p { font-size: 24px; line-height: 1.35; color: var(--graphite); max-width: 720px; }
+  .s-problem .code { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding-top: 48px; }
+  .s-problem .code-col { padding: 22px 28px; border-right: 1px solid var(--rule); font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 17px; line-height: 1.45; }
+  .s-problem .code-col:last-child { border-right: 0; }
+  .fn { color: var(--purple); font-weight: 700; } .key { color: var(--pink); } .str { color: var(--green); }
+  .s-problem .insights { grid-column: 1 / -1; border: 1px solid var(--rule); border-top: 0; display: grid; grid-template-columns: repeat(3,1fr); padding-top: 48px; position: relative; }
+  .s-problem .insight { padding: 20px 24px; border-right: 1px solid var(--rule); }
+  .s-problem .insight:last-child { border-right: 0; }
+  .s-problem .insight .num { font-size: 26px; color: var(--purple); font-weight: 700; }
+  .s-problem .insight h4 { font-size: 24px; line-height: 1.1; margin: 5px 0 16px; }
+  .bar-track { height: 13px; background: #E9E7EB; margin: 9px 0; }
+  .bar-fill { height: 100%; background: var(--ink); }
+  .bar-fill.purple { background: var(--purple); } .bar-fill.lime { background: var(--lime); } .bar-fill.pink { background: var(--pink); }
+
+  /* 03 · system */
+  .s-system { --accent: var(--pink); }
+  .s-system .problem-line { position: absolute; left: 96px; right: 96px; top: 105px; height: 190px; border-left: 7px solid var(--pink); padding: 28px 38px; }
+  .s-system .problem-line h2 { font-size: 48px; line-height: 1.04; letter-spacing: -.03em; margin-top: 18px; max-width: 1500px; }
+  .s-system .system-grid { position: absolute; left: 96px; right: 96px; top: 318px; height: 365px; display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--rule); }
+  .s-system .step { position: relative; padding: 25px 30px; border-right: 1px solid var(--rule); }
+  .s-system .step:last-child { border-right: 0; }
+  .s-system .step.center { background: var(--lime); }
+  .s-system .step-num { font-size: 96px; line-height: .8; letter-spacing: -.055em; font-weight: 700; color: var(--accent-step); }
+  .s-system .step h3 { font-size: 30px; line-height: 1.08; margin-top: 24px; }
+  .s-system .step p { font-size: 21px; line-height: 1.35; color: var(--graphite); margin-top: 15px; }
+  .s-system .step.center p { color: rgba(9,9,11,.7); }
+  .s-system .step-arrow { position: absolute; right: -21px; top: 170px; width: 42px; height: 42px; background: var(--white); border: 1px solid var(--ink); z-index: 4; display: grid; place-items: center; font-size: 30px; }
+  .s-system .product-grid { position: absolute; left: 96px; right: 96px; top: 700px; height: 310px; display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .s-system .product-card { border: 1px solid var(--rule); background: rgba(255,255,255,.75); }
+  .s-system .product-card .card-top { height: 88px; padding: 18px 24px; color: var(--white); background: var(--card-accent); }
+  .s-system .product-card .card-top .mono-small { opacity: .72; }
+  .s-system .product-card .card-top h4 { font-size: 29px; margin-top: 5px; }
+  .s-system .product-card .card-body { padding: 23px 24px; font-size: 21px; line-height: 1.35; color: var(--graphite); }
+
+  /* 04 · structure */
+  .s-structure { --accent: var(--purple); }
+  .s-structure .headline { position: absolute; left: 96px; top: 125px; width: 1690px; }
+  .s-structure .split { position: absolute; left: 96px; right: 96px; top: 330px; bottom: 58px; display: grid; grid-template-columns: 1fr 1fr; }
+  .s-structure .map, .s-structure .loop { border: 1px solid var(--rule); position: relative; padding: 72px 32px 30px; }
+  .s-structure .loop { background: var(--lavender); border-left: 0; }
+  .panel-label { position: absolute; left: 32px; top: 27px; display: flex; align-items: center; gap: 12px; }
+  .flow-stack { width: 710px; margin: 18px auto 0; display: grid; gap: 50px; position: relative; }
+  .flow-node { min-height: 58px; padding: 13px 18px; border: 1px solid var(--rule); background: var(--white); position: relative; }
+  .flow-node strong { display: block; font-size: 22px; line-height: 1.05; }
+  .flow-node span { display: block; margin-bottom: 4px; color: var(--graphite); }
+  .flow-node::after { content: '↑'; position: absolute; left: 50%; top: -49px; transform: translateX(-50%); font-size: 35px; }
+  .flow-node:first-child::after { display: none; }
+  .gateway { display: grid; grid-template-columns: repeat(3,1fr); padding: 0; }
+  .gateway div { padding: 12px 10px; text-align: center; border-right: 1px solid var(--rule); }
+  .gateway div:last-child { border-right: 0; }
+  .gateway .active { background: var(--lime); }
+  .s-structure .map-note { position: absolute; bottom: 26px; left: 32px; right: 32px; font-size: 19px; line-height: 1.35; color: var(--graphite); }
+  .loop-grid { position: absolute; left: 35px; right: 35px; top: 100px; bottom: 85px; }
+  .loop-node { position: absolute; width: 255px; min-height: 92px; padding: 14px 15px; border: 1px solid var(--rule); background: var(--white); }
+  .loop-node h4 { font-size: 20px; line-height: 1.08; margin-top: 6px; }
+  .loop-node.a { left: 0; top: 0; } .loop-node.b { right: 0; top: 0; } .loop-node.c { right: 0; bottom: 0; } .loop-node.d { left: 0; bottom: 0; }
+  .loop-center { position: absolute; width: 250px; height: 72px; left: 50%; top: 50%; transform: translate(-50%,-50%); border: 6px solid var(--lime); background: var(--white); display: grid; place-items: center; font-size: 30px; font-weight: 700; }
+  .connector { position: absolute; background: var(--ink); }
+  .connector.top { left: 255px; right: 255px; top: 45px; height: 2px; }
+  .connector.right { right: 126px; top: 92px; bottom: 92px; width: 2px; }
+  .connector.bottom { left: 255px; right: 255px; bottom: 45px; height: 2px; }
+  .connector.left { left: 126px; top: 92px; bottom: 92px; width: 2px; }
+  .loop-caption { position: absolute; left: 35px; right: 35px; bottom: 24px; font-size: 19px; line-height: 1.35; color: var(--graphite); }
+
+  /* 05 · comparison */
+  .s-compare { --accent: var(--pink); }
+  .s-compare .headline { position: absolute; left: 96px; top: 118px; }
+  .s-compare .compare-grid { position: absolute; left: 96px; right: 96px; top: 260px; bottom: 58px; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); }
+  .s-compare .compare-side { padding: 34px 38px; position: relative; }
+  .s-compare .compare-side.right { background: var(--ink); color: var(--white); }
+  .s-compare .side-head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .s-compare .side-head h3 { font-size: 38px; }
+  .s-compare .side-head .eyebrow { color: var(--purple); }
+  .s-compare .right .side-head .eyebrow { color: var(--cyan); }
+  .s-compare .mega-stat { margin-top: 20px; font-size: 108px; line-height: .86; letter-spacing: -.055em; font-weight: 700; color: var(--purple); }
+  .s-compare .right .mega-stat { color: var(--cyan); }
+  .s-compare .mega-stat small { font-size: 50px; color: var(--purple-light); }
+  .s-compare .right .mega-stat small { color: var(--lime); }
+  .s-compare .detail-list { margin-top: 28px; padding-top: 22px; border-top: 1px solid currentColor; font-size: 26px; line-height: 1.55; color: var(--graphite); }
+  .s-compare .right .detail-list { color: rgba(255,255,255,.78); border-color: rgba(255,255,255,.25); }
+  .logo-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+  .right .tag { background: transparent; color: rgba(255,255,255,.82); }
+  .compare-callout { position: absolute; left: 38px; right: 38px; bottom: 36px; padding: 19px 22px; border: 1px solid var(--purple); background: var(--lavender); font-size: 26px; line-height: 1.32; }
+  .right .compare-callout { border-color: var(--cyan); background: rgba(153,229,255,.08); color: var(--cyan); }
+
+  /* 06 · asymmetry */
+  .s-asymmetry { --accent: var(--lime); }
+  .s-asymmetry .headline { position: absolute; left: 96px; top: 120px; width: 1550px; }
+  .s-asymmetry .visual { position: absolute; left: 96px; top: 365px; width: 580px; height: 520px; border-bottom: 2px solid var(--ink); display: flex; align-items: flex-end; gap: 52px; padding: 0 60px; }
+  .s-asymmetry .vbar { width: 170px; background: var(--purple-light); position: relative; }
+  .s-asymmetry .vbar.tall { height: 430px; background: var(--purple); }
+  .s-asymmetry .vbar.short { height: 65px; }
+  .s-asymmetry .vbar strong { position: absolute; left: 50%; transform: translateX(-50%); top: -65px; white-space: nowrap; font-size: 62px; line-height: 1; color: var(--ink); }
+  .s-asymmetry .vbar.tall strong { color: var(--purple); }
+  .s-asymmetry .vbar span { position: absolute; left: 50%; transform: translateX(-50%); bottom: -44px; white-space: nowrap; color: var(--graphite); }
+  .s-asymmetry .table { position: absolute; left: 725px; right: 96px; top: 555px; }
+  .s-asymmetry .trow { display: grid; grid-template-columns: 160px 1fr 1fr; align-items: center; min-height: 86px; border-top: 1px solid rgba(9,9,11,.18); }
+  .s-asymmetry .trow.head { border-top-color: var(--rule); border-bottom: 1px solid var(--rule); min-height: 70px; }
+  .s-asymmetry .trow > div { padding: 15px 18px; font-size: 26px; }
+  .s-asymmetry .trow > div:first-child { font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 17px; letter-spacing: .12em; color: var(--purple); }
+  .s-asymmetry .trow .winner { color: var(--purple); font-weight: 700; }
+  .s-asymmetry .bottom-thesis { position: absolute; left: 96px; right: 96px; bottom: 34px; border-top: 1px solid var(--rule); padding-top: 18px; font-size: 37px; line-height: 1.08; font-weight: 700; }
+  .s-asymmetry .bottom-thesis .pink { color: var(--pink); }
+
+  /* 07 · segments */
+  .s-segments { --accent: var(--lime); }
+  .s-segments .headline { position: absolute; left: 96px; top: 110px; width: 1500px; }
+  .segment-table { position: absolute; left: 96px; right: 96px; top: 262px; height: 292px; border: 1px solid var(--rule); }
+  .segment-row { display: grid; grid-template-columns: 260px 1fr; min-height: 96px; border-bottom: 1px solid var(--rule); }
+  .segment-row:last-child { border-bottom: 0; }
+  .segment-tier { padding: 18px 22px; background: var(--tier); color: var(--tier-text); }
+  .segment-tier strong { display: block; font-size: 28px; line-height: 1.05; }
+  .segment-names { padding: 26px 26px; font-size: 29px; line-height: 1.2; font-weight: 500; }
+  .segment-names .dot { margin: 0 13px; color: var(--graphite); }
+  .quotes-two { position: absolute; left: 96px; right: 96px; top: 575px; bottom: 50px; display: grid; grid-template-columns: 1.08fr .92fr; gap: 14px; }
+  .quote-panel { position: relative; padding: 50px 38px 32px; border: 1px solid var(--rule); }
+  .quote-panel.dark-q { background: var(--ink); color: var(--white); }
+  .quote-panel.light-q { background: rgba(255,255,255,.82); border-left: 7px solid var(--lime); }
+  .quote-panel .quote-mark { position: absolute; top: 38px; left: 38px; color: var(--lime); }
+  .quote-panel .quote-copy { margin-top: 82px; max-width: 800px; }
+  .quote-panel.dark-q .quote-copy { color: var(--white); }
+  .quote-panel .attribution { position: absolute; left: 38px; bottom: 28px; color: var(--cyan); }
+  .quote-panel.light-q .attribution { color: var(--green); }
+
+  /* 08 · evidence */
+  .s-evidence { --accent: var(--pink); }
+  .s-evidence .headline { position: absolute; left: 96px; top: 112px; width: 1570px; }
+  .evidence-dashboard { position: absolute; left: 96px; right: 96px; top: 270px; height: 320px; border: 1px solid var(--rule); display: grid; grid-template-columns: repeat(3,1fr); padding-top: 48px; }
+  .dash-cell { padding: 25px 26px; border-right: 1px solid var(--rule); position: relative; }
+  .dash-cell:last-child { border-right: 0; }
+  .dash-cell .num { color: var(--purple); font-size: 28px; font-weight: 700; }
+  .dash-cell h3 { font-size: 28px; line-height: 1.06; margin: 8px 0 18px; }
+  .spark { height: 95px; display: flex; align-items: flex-end; gap: 5px; border-bottom: 1px solid var(--ink); }
+  .spark i { display: block; width: 14%; background: var(--bar); }
+  .evidence-quotes { position: absolute; left: 96px; right: 96px; top: 608px; bottom: 48px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 14px; }
+  .evidence-quote { border: 1px solid var(--rule); padding: 34px 30px; position: relative; }
+  .evidence-quote.primary { background: var(--lime); }
+  .evidence-quote.secondary { background: var(--pink-soft); border-left: 7px solid var(--pink); }
+  .evidence-quote p { font-size: 31px; line-height: 1.24; font-weight: 500; max-width: 880px; }
+  .evidence-quote .attribution { position: absolute; left: 30px; bottom: 24px; color: var(--ink); }
+
+  /* 09 · pillars */
+  .s-pillars { --accent: var(--purple); }
+  .s-pillars .headline { position: absolute; left: 96px; top: 118px; width: 1540px; }
+  .pillar-grid { position: absolute; left: 96px; right: 96px; top: 355px; height: 590px; display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .pillar { border: 1px solid var(--rule); position: relative; background: rgba(255,255,255,.72); }
+  .pillar-top { height: 128px; padding: 25px 26px; background: var(--pillar); color: var(--pillar-text); }
+  .pillar-top h3 { font-size: 40px; margin-top: 10px; }
+  .pillar-body { padding: 30px 26px; }
+  .pillar-body p { font-size: 25px; line-height: 1.34; color: var(--graphite); margin-bottom: 24px; }
+  .pillar-outcome { position: absolute; left: 26px; right: 26px; bottom: 25px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .pillar-outcome strong { display: block; margin-top: 9px; font-size: 28px; }
+  .s-pillars .conclusion { position: absolute; left: 96px; right: 96px; bottom: 34px; height: 78px; display: flex; align-items: center; padding: 0 30px; border: 1px solid var(--rule); background: var(--lime); font-size: 27px; font-weight: 700; }
+
+  /* 10 · roadmap */
+  .s-roadmap { --accent: var(--lime); }
+  .s-roadmap .headline { position: absolute; left: 96px; top: 110px; }
+  .foundation { position: absolute; left: 96px; right: 96px; top: 280px; height: 112px; display: grid; grid-template-columns: 280px 1fr 1fr; border: 1px solid var(--rule); }
+  .foundation > div { padding: 24px 28px; border-right: 1px solid var(--rule); }
+  .foundation > div:last-child { border-right: 0; }
+  .foundation .live { background: var(--lime); }
+  .foundation strong { display: block; font-size: 26px; margin-top: 8px; }
+  .deliverables { position: absolute; left: 96px; right: 96px; top: 425px; bottom: 54px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .deliverable { border: 1px solid var(--rule); padding: 280px 42px 42px; position: relative; background: var(--lavender); }
+  .deliverable.dark-d { background: var(--ink); color: var(--white); }
+  .deliverable h3 { font-size: 55px; line-height: .98; letter-spacing: -.035em; margin: 24px 0 18px; }
+  .deliverable p { font-size: 26px; line-height: 1.3; color: var(--graphite); }
+  .deliverable.dark-d p { color: rgba(255,255,255,.72); }
+  .deliverable.dark-d .eyebrow { color: var(--lime); }
+  .deliverable .beta { color: var(--lime); }
+
+  /* 11 · summary */
+  .s-summary { --accent: var(--purple); }
+  .s-summary .summary-title { position: absolute; left: 80px; top: 148px; width: 450px; }
+  .s-summary .summary-title h2 { font-size: 104px; line-height: .91; letter-spacing: -.05em; }
+  .summary-list { position: absolute; left: 570px; right: 84px; top: 128px; }
+  .summary-row { display: grid; grid-template-columns: 95px 1fr; min-height: 130px; border-top: 1px solid var(--rule); padding: 28px 0 24px; }
+  .summary-row .n { padding-top: 8px; font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 18px; letter-spacing: .15em; color: var(--graphite); }
+  .summary-row p { font-size: 29px; line-height: 1.32; color: var(--graphite); }
+  .summary-row strong { color: var(--ink); }
+
+  /* 12 · closing */
+  .s-closing { --accent: var(--lime); }
+  .s-closing .thanks { position: absolute; left: 96px; top: 400px; font-size: 210px; line-height: .83; letter-spacing: -.06em; font-weight: 700; }
+  .s-closing .questions { position: absolute; left: 104px; top: 690px; font-size: 70px; line-height: 1; letter-spacing: -.035em; font-weight: 700; color: var(--cyan); }
+  .s-closing .foot-left, .s-closing .foot-right { position: absolute; bottom: 44px; font-family: Consolas, "SFMono-Regular", ui-monospace, monospace; font-size: 17px; letter-spacing: .15em; color: rgba(255,255,255,.58); }
+  .s-closing .foot-left { left: 96px; } .s-closing .foot-right { right: 96px; }
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+  <!-- 01 · DEFINITION COVER -->
+  <section class="slide s-cover" data-label="01 Cover">
+    <div class="kicker"><span class="marker"></span>fal · style</div>
+    <div class="page-count">01 · 12</div>
+    <div class="cover-inner">
+      <div class="cover-label mono-label"><span class="marker" style="background:var(--purple)"></span>a system brief</div>
+      <h1 class="display-hero">fal <span class="purple-word">Signal</span><span class="period"></span></h1>
+      <p class="dek">A general-purpose presentation language for turning <strong>product systems, technical evidence, and strategic decisions</strong> into one clear story.</p>
+    </div>
+    <div class="micro-squares" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="footer-rule"></div>
+  </section>
+
+  <!-- 02 · PROBLEM + ANSWER BOARD -->
+  <section class="slide s-problem" data-label="02 Problem + Answer">
+    <div class="kicker"><span class="marker"></span>product · the problem</div>
+    <div class="page-count">02 · 12</div>
+    <div class="thesis frame">
+      <div class="thesis-main">
+        <div class="eyebrow accent"><span class="marker" style="margin-right:12px"></span>the problem · for product teams</div>
+        <h2>Teams can generate anything. They still cannot see what quietly breaks between request and result.</h2>
+      </div>
+      <div class="thesis-stat"><strong>03</strong><span class="mono-label muted" style="margin-top:18px">signals<br/>quality · latency · cost</span></div>
+    </div>
+    <div class="answer-head"><div class="mono-label"><span class="marker" style="margin-right:12px"></span>our answer</div><h3>One feedback loop from request to release.</h3></div>
+    <div class="answer-grid">
+      <div class="capture">
+        <div class="band-head tint" style="position:absolute;left:0;right:0;top:0"><span class="marker" style="background:var(--purple)"></span><span class="mono-label">1 · capture context</span></div>
+        <div class="tags"><span class="tag active">request · live</span><span class="tag">release</span><span class="tag">segment</span><span class="tag">feedback</span></div>
+        <p>Attach the context that makes a generation explainable. Keep the payload flexible; keep the evaluation path consistent.</p>
+      </div>
+      <div class="code">
+        <div class="band-head tint" style="position:absolute;left:0;right:0;top:0"><span class="marker" style="background:var(--purple)"></span><span class="mono-label">2 · submit + annotate</span></div>
+        <div class="code-col"><span class="accent">// submit-time</span><br/><br/>client.<span class="fn">submit</span>(<span class="str">"model"</span>, {<br/>&nbsp;&nbsp;<span class="key">prompt</span>: <span class="str">"..."</span>,<br/>&nbsp;&nbsp;<span class="key">release</span>: <span class="str">"v18"</span>,<br/>&nbsp;&nbsp;<span class="key">segment</span>: <span class="str">"pro"</span><br/>})</div>
+        <div class="code-col"><span class="accent">// post-annotate</span><br/><br/>client.<span class="fn">annotate</span>(id, {<br/>&nbsp;&nbsp;<span class="key">selected</span>: <span class="str">true</span>,<br/>&nbsp;&nbsp;<span class="key">rating</span>: <span class="str">"up"</span>,<br/>&nbsp;&nbsp;<span class="key">value</span>: <span class="str">0.92</span><br/>})</div>
+      </div>
+      <div class="insights">
+        <div class="band-head" style="position:absolute;left:0;right:0;top:0"><span class="marker" style="background:var(--lime)"></span><span class="mono-label">3 · answer the question</span></div>
+        <div class="insight"><span class="num">01</span><h4>What changed after release?</h4><div class="mono-small">release · v18</div><div class="bar-track"><div class="bar-fill lime" style="width:76%"></div></div><div class="mono-small">quality · +12 pts</div><div class="bar-track"><div class="bar-fill purple" style="width:58%"></div></div></div>
+        <div class="insight"><span class="num">02</span><h4>Who is actually using it?</h4><div class="mono-small">creative teams · 61%</div><div class="bar-track"><div class="bar-fill" style="width:61%"></div></div><div class="mono-small">developers · 27%</div><div class="bar-track"><div class="bar-fill pink" style="width:27%"></div></div></div>
+        <div class="insight"><span class="num">03</span><h4>Where should we improve next?</h4><div class="mono-small">quality / segment</div><div class="bar-track"><div class="bar-fill purple" style="width:82%"></div></div><div class="mono-small">latency / segment</div><div class="bar-track"><div class="bar-fill lime" style="width:43%"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · THREE-STEP SYSTEM -->
+  <section class="slide s-system" data-label="03 System">
+    <div class="kicker"><span class="marker"></span>system · how it works</div>
+    <div class="page-count">03 · 12</div>
+    <div class="problem-line frame"><div class="eyebrow accent"><span class="marker" style="margin-right:12px"></span>the operating model</div><h2>Preserve the request context, join it to outcomes, then turn the pattern into action.</h2></div>
+    <div class="system-grid">
+      <div class="step" style="--accent-step:var(--purple)"><div class="step-num">01</div><div class="eyebrow accent">teams add context</div><h3>Tag the request while the intent is still known.</h3><p>Release, segment, workflow, customer, and experiment move with the generation.</p><div class="step-arrow">→</div></div>
+      <div class="step center" style="--accent-step:var(--ink)"><div class="step-num">02</div><div class="eyebrow">fal joins the signal</div><h3>Compare quality, behavior, latency, and cost.</h3><p>One platform view across models and modalities reveals what isolated logs cannot.</p><div class="step-arrow">→</div></div>
+      <div class="step" style="--accent-step:var(--pink)"><div class="step-num">03</div><div class="eyebrow" style="color:var(--pink)">teams decide</div><h3>Ship the next release with evidence.</h3><p>Keep the winners, inspect the failures, and convert clusters into the next work queue.</p></div>
+    </div>
+    <div class="product-grid">
+      <article class="product-card" style="--card-accent:var(--ink)"><div class="card-top"><div class="mono-small">product 01</div><h4>Monitor</h4></div><div class="card-body">A live operational view of quality, latency, cost, and user behavior by release.</div></article>
+      <article class="product-card" style="--card-accent:var(--purple)"><div class="card-top"><div class="mono-small">product 02</div><h4>Compare</h4></div><div class="card-body">A consistent evaluation surface for models, prompts, system versions, and customer segments.</div></article>
+      <article class="product-card" style="--card-accent:var(--pink)"><div class="card-top"><div class="mono-small">product 03</div><h4>Improve</h4></div><div class="card-body">Failure clusters become review sets, post-training data, and the next iteration plan.</div></article>
+    </div>
+  </section>
+
+  <!-- 04 · STRUCTURAL ARGUMENT -->
+  <section class="slide s-structure" data-label="04 Structure">
+    <div class="kicker"><span class="marker"></span>structural argument</div>
+    <div class="page-count">04 · 12</div>
+    <h2 class="display-section headline">Every request is a decision point. The loop compounds when context survives<span class="period"></span></h2>
+    <div class="split">
+      <div class="map">
+        <div class="panel-label mono-label"><span class="marker" style="background:var(--lime)"></span>the position · request map</div>
+        <div class="flow-stack">
+          <div class="flow-node"><span class="mono-small">consumers · teams</span><strong>people generating media inside products</strong></div>
+          <div class="flow-node"><span class="mono-small">application layer</span><strong>workflows, agents, creative tools, and customer apps</strong></div>
+          <div class="flow-node gateway"><div>direct<br/><span class="mono-small">no context</span></div><div class="active">fal<br/><span class="mono-small">signal retained</span></div><div>private<br/><span class="mono-small">policy aware</span></div></div>
+          <div class="flow-node"><span class="mono-small">model providers</span><strong>specialized models across image, video, audio, and 3D</strong></div>
+        </div>
+        <p class="map-note">The platform layer is where request intent, model behavior, and user outcomes can still be connected.</p>
+      </div>
+      <div class="loop">
+        <div class="panel-label mono-label" style="color:var(--purple)"><span class="marker"></span>the feedback loop</div>
+        <div class="loop-grid">
+          <div class="connector top"></div><div class="connector right"></div><div class="connector bottom"></div><div class="connector left"></div>
+          <div class="loop-node a"><div class="mono-small accent">01 · context</div><h4>Teams tag what the request means.</h4></div>
+          <div class="loop-node b"><div class="mono-small accent">02 · evidence</div><h4>The product shows what works.</h4></div>
+          <div class="loop-node c"><div class="mono-small" style="color:var(--pink)">03 · action</div><h4>Teams choose the next release.</h4></div>
+          <div class="loop-node d"><div class="mono-small" style="color:var(--pink)">04 · learning</div><h4>Results improve the next model.</h4></div>
+          <div class="loop-center">fal <span style="color:var(--purple)">Signal</span><span style="width:10px;height:10px;background:var(--lime);margin-left:5px"></span></div>
+        </div>
+        <p class="loop-caption">Each step creates value for the party at that step. The advantage compounds because the complete loop is hard to reconstruct from the edges.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · LIGHT/DARK COMPARISON -->
+  <section class="slide s-compare" data-label="05 Comparison">
+    <div class="kicker"><span class="marker"></span>comparison · two paths</div>
+    <div class="page-count">05 · 12</div>
+    <h2 class="display-section headline">Two paths. One leaves the team guessing<span class="period"></span></h2>
+    <div class="compare-grid">
+      <div class="compare-side left">
+        <div class="side-head"><h3>Manual review</h3><div class="eyebrow">fragmented · reactive</div></div>
+        <div class="mega-stat">days<small> to know</small></div>
+        <div class="detail-list">Slack screenshots and ad-hoc folders<br/>Different rubrics for every release<br/>Failures arrive through customer complaints</div>
+        <div class="logo-tags"><span class="tag">exports</span><span class="tag">spreadsheets</span><span class="tag">threads</span><span class="tag">gut feel</span></div>
+        <div class="compare-callout"><strong>Work exists, but the evidence does not compound.</strong> Every launch starts the investigation again.</div>
+      </div>
+      <div class="compare-side right">
+        <div class="side-head"><h3>Instrumented loop</h3><div class="eyebrow">continuous · comparable</div></div>
+        <div class="mega-stat">live<small> signal</small></div>
+        <div class="detail-list">One context model across releases<br/>The same metrics by customer and segment<br/>Failures cluster before they become tickets</div>
+        <div class="logo-tags"><span class="tag">quality</span><span class="tag">latency</span><span class="tag">cost</span><span class="tag">behavior</span></div>
+        <div class="compare-callout"><strong>Each release leaves the system smarter.</strong> The next question starts with accumulated context.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · ASYMMETRY -->
+  <section class="slide s-asymmetry" data-label="06 Asymmetry">
+    <div class="kicker"><span class="marker"></span>the asymmetry · illustrative</div>
+    <div class="page-count">06 · 12</div>
+    <h2 class="display-statement headline">We spend longer debugging what we did not measure<span class="period" style="background:var(--purple)"></span></h2>
+    <div class="visual">
+      <div class="vbar short"><strong>1×</strong><span class="mono-label">instrumented</span></div>
+      <div class="vbar tall"><strong>10×</strong><span class="mono-label">manual · reactive</span></div>
+    </div>
+    <div class="table">
+      <div class="trow head"><div></div><div class="mono-label">manual</div><div class="mono-label" style="color:var(--purple)">instrumented</div></div>
+      <div class="trow"><div>source</div><div>screenshots + tickets</div><div class="winner">production context</div></div>
+      <div class="trow"><div>timing</div><div>after complaint</div><div class="winner">during release</div></div>
+      <div class="trow"><div>output</div><div>one-off diagnosis</div><div class="winner">reusable evidence</div></div>
+    </div>
+    <div class="bottom-thesis">The expensive part is not finding one bug. It is relearning <span class="pink">why the same class of bug happened again.</span></div>
+  </section>
+
+  <!-- 07 · SEGMENTS + QUOTES -->
+  <section class="slide s-segments" data-label="07 Segments + Quotes">
+    <div class="kicker"><span class="marker"></span>customer evidence · segments</div>
+    <div class="page-count">07 · 12</div>
+    <h2 class="display-section headline">The need changes by team. The underlying signal does not<span class="period"></span></h2>
+    <div class="segment-table">
+      <div class="segment-row"><div class="segment-tier" style="--tier:var(--ink);--tier-text:var(--white)"><div class="eyebrow" style="color:var(--lime)">enterprise</div><strong>govern + compare</strong></div><div class="segment-names">security <span class="dot">·</span> release controls <span class="dot">·</span> model governance <span class="dot">·</span> shared evaluation</div></div>
+      <div class="segment-row"><div class="segment-tier" style="--tier:var(--purple);--tier-text:var(--white)"><div class="eyebrow" style="color:var(--cyan)">gen-media native</div><strong>quality + velocity</strong></div><div class="segment-names">prompt systems <span class="dot">·</span> creative workflows <span class="dot">·</span> user feedback <span class="dot">·</span> rapid release</div></div>
+      <div class="segment-row"><div class="segment-tier" style="--tier:var(--lime);--tier-text:var(--ink)"><div class="eyebrow">builders</div><strong>start with defaults</strong></div><div class="segment-names"><strong style="font-size:42px">1000s</strong> <span class="muted">of teams need a useful baseline before they can hire an evaluation function.</span></div></div>
+    </div>
+    <div class="quotes-two">
+      <article class="quote-panel dark-q"><div class="quote-mark">“</div><p class="quote-copy">We can feel when a release drifts, but today the signal arrives as a pile of anecdotes. <span style="color:var(--lime)">We need the pattern before the escalation.</span></p><div class="attribution">product lead<br/><span style="color:rgba(255,255,255,.55)">enterprise media team</span></div></article>
+      <article class="quote-panel light-q"><div class="quote-mark">“</div><p class="quote-copy">Our users do not describe the failure in model terms. The application has to connect behavior back to the generation.</p><div class="attribution">founder<br/><span class="muted">creative workflow company</span></div></article>
+    </div>
+  </section>
+
+  <!-- 08 · EVIDENCE DASHBOARD -->
+  <section class="slide s-evidence" data-label="08 Evidence">
+    <div class="kicker"><span class="marker"></span>evidence · release review</div>
+    <div class="page-count">08 · 12</div>
+    <h2 class="display-section headline">A good dashboard changes the next decision, not just the current chart<span class="period"></span></h2>
+    <div class="evidence-dashboard">
+      <div class="band-head" style="position:absolute;left:0;right:0;top:0"><span class="marker" style="background:var(--lime)"></span><span class="mono-label">three views · one release</span></div>
+      <div class="dash-cell"><div class="num">01</div><h3>Quality by release</h3><div class="spark" style="--bar:var(--purple)"><i style="height:42%"></i><i style="height:48%"></i><i style="height:55%"></i><i style="height:63%"></i><i style="height:78%;background:var(--lime)"></i><i style="height:81%;background:var(--lime)"></i></div><div class="mono-small" style="margin-top:10px">v14 · v15 · v16 · v17 · v18</div></div>
+      <div class="dash-cell"><div class="num">02</div><h3>Use-case mix</h3><div class="mono-small">product imagery · 54%</div><div class="bar-track"><div class="bar-fill" style="width:54%"></div></div><div class="mono-small">campaign creative · 31%</div><div class="bar-track"><div class="bar-fill purple" style="width:31%"></div></div><div class="mono-small">experiments · 15%</div><div class="bar-track"><div class="bar-fill pink" style="width:15%"></div></div></div>
+      <div class="dash-cell"><div class="num">03</div><h3>Failure clusters</h3><div class="spark" style="--bar:var(--pink)"><i style="height:70%"></i><i style="height:62%"></i><i style="height:57%"></i><i style="height:42%"></i><i style="height:35%"></i><i style="height:21%;background:var(--lime)"></i></div><div class="mono-small" style="margin-top:10px">anatomy · text · style · latency</div></div>
+    </div>
+    <div class="evidence-quotes"><article class="evidence-quote primary"><p>Release v18 improved average quality, but the real win is narrower: <strong>product-image teams selected 23% more outputs on the first generation.</strong></p><div class="attribution">decision · expand to 50% traffic</div></article><article class="evidence-quote secondary"><p>One segment regressed on latency. Keep the old route as a fallback while the new path scales.</p><div class="attribution" style="color:var(--pink)">guardrail · p95 latency</div></article></div>
+  </section>
+
+  <!-- 09 · THREE PILLARS -->
+  <section class="slide s-pillars" data-label="09 Pillars">
+    <div class="kicker"><span class="marker"></span>strategic unlocks</div>
+    <div class="page-count">09 · 12</div>
+    <h2 class="display-statement headline">Three levers. One system. They compound<span class="period"></span></h2>
+    <div class="pillar-grid">
+      <article class="pillar"><div class="pillar-top" style="--pillar:var(--purple);--pillar-text:var(--white)"><div class="eyebrow" style="color:var(--cyan)">model + application teams</div><h3>01 · new value.</h3></div><div class="pillar-body"><p>Turn invisible production learning into a product customers can use every day.</p><div class="mono-label accent">from raw events</div><div class="mono-small" style="margin-top:10px">requests · annotations · outputs</div><div class="pillar-outcome"><div class="mono-label muted">outcome</div><strong>an evidence product</strong></div></div></article>
+      <article class="pillar"><div class="pillar-top" style="--pillar:var(--lime);--pillar-text:var(--ink)"><div class="eyebrow">recurring · embedded</div><h3>02 · habit.</h3></div><div class="pillar-body"><p>Move from one-off investigations to a continuous release and review rhythm.</p><div class="mono-label" style="color:var(--green)">from episodic</div><div class="mono-small" style="margin-top:10px">launch → complaint → scramble</div><div class="pillar-outcome"><div class="mono-label muted">outcome</div><strong style="color:var(--green)">release → learn → improve</strong></div></div></article>
+      <article class="pillar"><div class="pillar-top" style="--pillar:var(--pink);--pillar-text:var(--white)"><div class="eyebrow" style="color:var(--lime)">defends the workflow</div><h3>03 · retention.</h3></div><div class="pillar-body"><p>Context, rubrics, collections, and historical comparisons become part of how teams ship.</p><div class="mono-label" style="color:var(--pink)">from a thin api</div><div class="mono-small" style="margin-top:10px">change a route and leave</div><div class="pillar-outcome"><div class="mono-label muted">outcome</div><strong style="color:var(--pink)">rebuild the learning loop</strong></div></div></article>
+    </div>
+    <div class="conclusion">The upside is new value. The floor is better product decisions and a workflow customers do not want to abandon.</div>
+  </section>
+
+  <!-- 10 · ROADMAP / ASK -->
+  <section class="slide s-roadmap" data-label="10 Roadmap">
+    <div class="kicker"><span class="marker"></span>the ask · six-week plan</div>
+    <div class="page-count">10 · 12</div>
+    <h2 class="display-statement headline">6 weeks to the default<span class="period"></span></h2>
+    <div class="foundation"><div class="live"><div class="eyebrow">already shipped</div><strong>live foundation</strong></div><div><strong>request pipeline</strong><span class="body" style="font-size:20px">context hooks · durable events · evaluation-ready payloads</span></div><div><strong>review surfaces</strong><span class="body" style="font-size:20px">collections · annotations · release comparison</span></div></div>
+    <div class="deliverables">
+      <article class="deliverable"><div class="eyebrow accent">deliverable 01</div><h3>Flexible Context Submission</h3><p>SDK and headers for arbitrary request metadata, post-hoc annotation, and release identity.</p></article>
+      <article class="deliverable dark-d"><div class="eyebrow">deliverable 02</div><h3>Signal Dashboard <span class="beta">Beta</span></h3><p>Closed beta with a small cohort of teams shipping production generative-media workflows.</p></article>
+    </div>
+  </section>
+
+  <!-- 11 · SUMMARY -->
+  <section class="slide s-summary" data-label="11 Summary">
+    <div class="kicker"><span class="marker"></span>summary</div>
+    <div class="page-count">11 · 12</div>
+    <div class="summary-title"><h2>The<br/>case<br/>on one<br/>page<span class="period"></span></h2></div>
+    <div class="summary-list">
+      <div class="summary-row"><div class="n">01</div><p>Production media systems create a rich trail of request context and user outcomes. <strong>Most teams cannot connect the two.</strong></p></div>
+      <div class="summary-row"><div class="n">02</div><p>A shared signal layer serves both builders and model teams: <strong>observability for one, production intelligence for the other.</strong></p></div>
+      <div class="summary-row"><div class="n">03</div><p>The core infrastructure already exists. The product work is to <strong>preserve context and make the resulting pattern useful.</strong></p></div>
+      <div class="summary-row"><div class="n">04</div><p>Value compounds when the workflow moves from episodic debugging to <strong>a continuous release-learning loop.</strong></p></div>
+      <div class="summary-row"><div class="n">05</div><p>Ask: <strong>one focused team, six weeks to beta, and one cohort willing to make decisions from the evidence.</strong></p></div>
+    </div>
+  </section>
+
+  <!-- 12 · CLOSING -->
+  <section class="slide purple s-closing" data-label="12 Closing">
+    <div class="kicker"><span class="marker"></span>end · q &amp; a</div>
+    <div class="page-count">12 · 12</div>
+    <div class="thanks">Thanks<span class="period"></span></div>
+    <div class="questions">Questions?</div>
+    <div class="foot-left">fal style · presentation system</div>
+    <div class="foot-right">general purpose · 2026</div>
+  </section>
+
+</deck-stage>
+</body>
+</html>
