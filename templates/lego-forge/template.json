@@ -1,19 +1,21 @@
 {
   "slug": "lego-forge",
   "name": "Lego Forge",
-  "tagline": "A playful brick-built workshop: pink surfaces, ink-blue outlines, yellow sparks, and chunky toy typography.",
-  "mood": ["playful", "tactile", "inventive", "bold", "workshop"],
+  "tagline": "Lego Forge's dark product UI: charcoal stages, precise control bars, colorful icons, and tactile raised actions.",
+  "mood": ["dark", "tactile", "inventive", "technical", "workshop"],
   "occasion": ["learning deck", "creative pitch", "product concept", "maker project", "workshop", "brand story"],
-  "tone": ["optimistic", "hands-on", "graphic", "clear"],
+  "tone": ["confident", "hands-on", "technical", "clear"],
   "formality": "medium-low",
   "density": "medium",
   "palette": {
-    "pink": "#F2A3CF",
-    "hot-pink": "#FF5FA8",
-    "yellow": "#FFE65A",
-    "indigo": "#30258E",
-    "ink": "#111116",
-    "paper": "#FFF9FC"
+    "paper": "#0A0A0A",
+    "chrome": "#151515",
+    "stage": "#272D37",
+    "line": "#383838",
+    "blue": "#638BFF",
+    "purple": "#BB88FF",
+    "yellow": "#FFCF00",
+    "mint": "#45DA8B"
   },
   "typography": {
     "display": "Outfit 800–900",

@@ -31,6 +31,23 @@
 .s-evidence .intro{position:absolute;left:96px;top:145px}.s-evidence .board{position:absolute;left:96px;right:96px;top:335px;bottom:82px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}.s-evidence .big{padding:40px}.s-evidence .metric{font-size:168px;line-height:.82;font-weight:900;color:var(--indigo)}.s-evidence .metric-label{margin:30px 0 42px;font-size:30px;font-weight:700}.s-evidence .bar{height:64px;border:3px solid var(--ink);background:#fff}.s-evidence .bar span{display:block;width:78%;height:100%;background:var(--yellow)}.s-evidence .notes{display:grid;grid-template-rows:1fr 1fr;gap:22px}.s-evidence .note-card{padding:34px}.s-evidence .note-card h3{font-size:31px;margin-bottom:15px}.s-evidence .note-card p{font-size:23px;line-height:1.35;color:var(--muted)}
 .s-check .intro{position:absolute;left:96px;top:145px;width:1050px}.s-check .list{position:absolute;left:96px;right:96px;top:365px;bottom:83px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.s-check .item{display:flex;align-items:center;gap:25px;padding:25px 30px;border:3px solid var(--ink);border-radius:8px;background:#fff;font-size:28px;font-weight:700}.s-check .box{width:48px;height:48px;flex:0 0 auto;border:4px solid var(--indigo);background:var(--yellow);position:relative}.s-check .box:after{content:"✓";position:absolute;left:7px;top:-10px;font-size:48px;font-weight:900;color:var(--indigo)}
 .s-close .center{position:absolute;inset:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.s-close .hammer{width:430px;margin-bottom:28px;filter:drop-shadow(20px 24px 16px rgba(0,0,0,.3))}.s-close .sticker{font-size:116px}.s-close p{margin-top:42px;color:#c6c2ca;font-size:30px}.s-close .spark.one{left:250px;top:310px}.s-close .spark.two{right:255px;bottom:260px}.s-close .spark.three{right:330px;top:170px;width:14px;height:14px}
+
+/* Canonical Lego Forge dark product UI */
+:root{--paper:#0a0a0a;--white:#111;--ink:#fafafa;--muted:#a3a3a3;--pink:#f5a6cf;--hot:#ff5fa8;--yellow:#ffcf00;--indigo:#638bff;--purple:#bb88ff;--mint:#45da8b;--lav:#202020;--line:#383838;--chrome:#151515;--stage:#272d37}
+.slide,.slide.pink,.slide.dark{background:var(--paper);color:var(--ink)}
+.topline{left:0;right:0;top:0;height:72px;padding:0 72px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.page,.dark .page{color:var(--muted)}.kicker{color:var(--yellow)}.body,.body-lg,.muted{color:var(--muted)}
+.sticker{color:var(--ink);-webkit-text-stroke:0;text-shadow:none;font-style:normal;text-transform:none}
+.panel{border:1px solid var(--line);border-radius:5px;background:var(--white);box-shadow:none}.panel-head{border-color:var(--line);background:var(--chrome)}
+.stud-field,.brick{display:none}.tag{border:1px solid var(--line);border-radius:4px;background:var(--white);color:var(--ink)}.tag.yellow{background:var(--yellow);color:#111;border-color:#9c7e00}.tag.pink{background:var(--purple);color:#111;border-color:#714ba3}
+.ui-actions{display:flex;gap:14px;margin-top:42px}.ui-btn{display:inline-flex;align-items:center;gap:12px;padding:15px 22px;border:1px solid var(--edge);border-radius:5px;background:var(--face);color:var(--text);box-shadow:0 4px 0 var(--edge);font-size:20px;font-weight:700}.ui-btn.blue{--face:#265be8;--edge:#16358c;--text:#fff}.ui-btn.violet{--face:#7544e8;--edge:#422486;--text:#fff}.ui-btn.neutral{--face:#111;--edge:#383838;--text:#fafafa}.ui-icon{font-size:22px}.ui-btn.blue .ui-icon{color:#dbe5ff}.ui-btn.violet .ui-icon{color:#eadfff}.ui-btn.neutral .ui-icon{color:var(--purple)}
+.s-cover .copy p{color:var(--muted)}.s-cover .hammer{right:100px;bottom:115px;width:610px;filter:drop-shadow(42px 48px 25px rgba(0,0,0,.55));z-index:2}.s-cover:after{content:"";position:absolute;right:58px;top:130px;width:760px;height:790px;border:1px solid var(--line);border-radius:5px;background:radial-gradient(ellipse at 48% 38%,#454d5a 0%,#1a1e26 100%);z-index:0}.s-cover .sticker{font-size:128px}.s-cover .copy{z-index:2}
+.s-thesis .visual{background:radial-gradient(ellipse at 48% 38%,#454d5a 0%,#1a1e26 100%)}.s-thesis .statement strong{color:var(--purple)}
+.s-four .card:nth-child(2),.s-four .card:nth-child(3){background:var(--white)}.s-four .num{color:var(--purple)}.s-four p,.s-evidence .note-card p{color:var(--muted)}
+.s-steps .step{border:1px solid var(--line);background:var(--white)}.s-steps .coin{background:var(--chrome);color:var(--yellow);box-shadow:0 3px 0 var(--line);border:1px solid var(--line)}.s-steps .step:after{color:#b2bac6}
+.s-compare .column.good{background:var(--chrome);box-shadow:inset 0 -3px var(--purple)}.s-compare li b{color:var(--purple)}
+.s-evidence .metric{color:var(--indigo)}.s-evidence .bar{border:1px solid var(--line);background:#0a0a0a}.s-evidence .bar span{background:var(--indigo)}
+.s-check .item{border:1px solid var(--line);border-radius:5px;background:var(--white)}.s-check .box{border:1px solid #087762;border-radius:4px;background:#20d5ac}.s-check .box:after{color:#082b25}.s-close .spark{background:var(--yellow);box-shadow:0 0 0 5px #574b18}.s-close p{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -38,7 +55,7 @@
   <section class="slide pink s-cover">
     <div class="stud-field"></div><div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span>01 / 08</span></div>
     <div class="brick brick-a"></div><div class="brick brick-b"></div>
-    <div class="copy"><div class="kicker">A little space for big ideas</div><h1 class="display sticker">Build the<br>impossible.</h1><p>A tactile presentation system for ideas that should feel inventive, dimensional, and ready to make.</p></div>
+    <div class="copy"><div class="kicker">A little space for big ideas</div><h1 class="display sticker">Build the<br>impossible.</h1><p>A dark product system for ideas that should feel precise, dimensional, and ready to make.</p><div class="ui-actions"><span class="ui-btn blue"><span class="ui-icon">↻</span>Fit build</span><span class="ui-btn neutral"><span class="ui-icon">◇</span>3D model</span><span class="ui-btn violet"><span class="ui-icon">▱</span>Build steps</span></div></div>
     <img class="hammer" src="assets/forge-hammer.png" alt="Brick-built toy hammer">
   </section>
   <section class="slide s-thesis">

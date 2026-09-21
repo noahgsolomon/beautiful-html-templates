@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-21T18:33:07.241Z",
+  "generated_at": "2026-09-21T18:40:15.494Z",
   "template_count": 36,
   "templates": [
     {
@@ -537,12 +537,12 @@
     {
       "slug": "lego-forge",
       "name": "Lego Forge",
-      "tagline": "A playful brick-built workshop: pink surfaces, ink-blue outlines, yellow sparks, and chunky toy typography.",
+      "tagline": "Lego Forge's dark product UI: charcoal stages, precise control bars, colorful icons, and tactile raised actions.",
       "mood": [
-        "playful",
+        "dark",
         "tactile",
         "inventive",
-        "bold",
+        "technical",
         "workshop"
       ],
       "occasion": [
@@ -554,9 +554,9 @@
         "brand story"
       ],
       "tone": [
-        "optimistic",
+        "confident",
         "hands-on",
-        "graphic",
+        "technical",
         "clear"
       ],
       "formality": "medium-low",
