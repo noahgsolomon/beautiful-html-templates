@@ -14,7 +14,7 @@ Clone https://github.com/zarazhangrui/beautiful-html-templates and follow the in
 
 ## Gallery
 
-All 35 templates. Three slides per template (cover · mid-deck · later) to give a sense of how each visual system handles different layouts. Click any template name to open its folder on GitHub — the HTML, metadata, and any sibling assets are all there.
+All 36 templates. Three slides per template (cover · mid-deck · later) to give a sense of how each visual system handles different layouts. Click any template name to open its folder on GitHub — the HTML, metadata, and any sibling assets are all there.
 
 ### [Soft Editorial](./templates/soft-editorial/)
 
@@ -105,6 +105,16 @@ All 35 templates. Three slides per template (cover · mid-deck · later) to give
 </p>
 
 > Focal grotesk, technical mono labels, ghost-grid paper, and electric purple/lime/pink/cyan blocks for sparse statements and dense evidence boards.
+
+### [Lego Forge](./templates/lego-forge/)
+
+<p>
+  <img src="./screenshots/lego-forge-1.png" width="32.5%" alt="Lego Forge — slide 1" />
+  <img src="./screenshots/lego-forge-4.png" width="32.5%" alt="Lego Forge — slide 4" />
+  <img src="./screenshots/lego-forge-8.png" width="32.5%" alt="Lego Forge — slide 8" />
+</p>
+
+> A playful brick-built workshop: pink stud fields, ink-blue outlines, yellow sparks, product renders, and chunky toy typography.
 
 ### [Neo-Grid Bold](./templates/neo-grid-bold/)
 

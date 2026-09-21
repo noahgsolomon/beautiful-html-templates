@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lego Forge — Presentation Template</title>
+<script src="deck-stage.js"></script>
+<style>
+@font-face{font-family:Outfit;src:url("fonts/Outfit-Variable.ttf") format("truetype");font-weight:100 900;font-display:swap}
+:root{--paper:#fff9fc;--white:#fff;--ink:#111116;--muted:#68636d;--pink:#f2a3cf;--hot:#ff5fa8;--yellow:#ffe65a;--indigo:#30258e;--lav:#eee9ff;--line:#111116}
+*{box-sizing:border-box}html,body{margin:0;background:#0b0b0e}body{font-family:Outfit,Arial,sans-serif;color:var(--ink)}deck-stage{background:#0b0b0e}h1,h2,h3,p,ol,ul{margin:0}
+.slide{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
+.slide.dark{background:var(--ink);color:#fff}.slide.pink{background:var(--pink)}
+.topline{position:absolute;left:72px;right:72px;top:48px;display:flex;align-items:center;justify-content:space-between;font-size:17px;font-weight:750;letter-spacing:.16em;text-transform:uppercase;z-index:5}
+.brand{display:flex;align-items:center;gap:15px}.brand img{width:54px;height:54px;object-fit:contain}.brand span{letter-spacing:-.03em;text-transform:none;font-size:25px;font-weight:800}.page{color:var(--muted)}.dark .page{color:#a8a3ad}
+.kicker{font-size:18px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo)}
+.display{font-size:132px;line-height:.86;letter-spacing:-.065em;font-weight:900}.section-title{font-size:76px;line-height:.94;letter-spacing:-.045em;font-weight:850}.title{font-size:42px;line-height:1;letter-spacing:-.03em;font-weight:800}.body{font-size:28px;line-height:1.36;color:var(--muted)}
+.sticker{color:#fff;-webkit-text-stroke:9px var(--indigo);paint-order:stroke fill;text-shadow:0 0 0 var(--indigo),11px 11px 0 var(--yellow);letter-spacing:-.055em;font-style:italic;text-transform:uppercase}
+.panel{border:3px solid var(--line);border-radius:10px;background:rgba(255,255,255,.82);box-shadow:10px 10px 0 var(--indigo)}
+.panel-head{height:62px;padding:0 24px;border-bottom:3px solid var(--line);display:flex;align-items:center;gap:12px;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}
+.stud{width:22px;height:22px;border-radius:50%;background:var(--yellow);box-shadow:inset 0 -5px 0 rgba(0,0,0,.14)}
+.tag{display:inline-flex;padding:10px 16px;border:2px solid var(--ink);border-radius:4px;background:#fff;font-size:18px;font-weight:750}.tag.yellow{background:var(--yellow)}.tag.pink{background:var(--pink)}
+.stud-field{position:absolute;inset:0;opacity:.16;background-image:radial-gradient(circle at 31% 28%,#fff 0 11px,transparent 12px),radial-gradient(circle at 50% 55%,#4e246f 0 13px,transparent 14px);background-size:86px 86px;pointer-events:none}
+.spark{position:absolute;width:22px;height:22px;background:var(--yellow);transform:rotate(45deg);box-shadow:0 0 0 6px var(--indigo)}
+.brick{position:relative;border:4px solid var(--indigo);border-radius:8px;background:var(--pink);box-shadow:inset 0 -14px 0 rgba(48,37,142,.18),8px 9px 0 rgba(48,37,142,.22)}.brick:before,.brick:after{content:"";position:absolute;top:-20px;width:42px;height:22px;border:4px solid var(--indigo);border-bottom:0;border-radius:50% 50% 0 0;background:#ffc4e4}.brick:before{left:30px}.brick:after{right:30px}
+.s-cover .copy{position:absolute;left:110px;top:250px;width:1070px}.s-cover .copy p{width:790px;margin-top:52px;font-size:34px;line-height:1.34;color:#38323e}.s-cover .sticker{font-size:138px}.s-cover .hammer{position:absolute;right:60px;bottom:52px;width:680px;filter:drop-shadow(28px 34px 20px rgba(48,37,142,.26));transform:rotate(-5deg)}.s-cover .brick-a{position:absolute;right:90px;top:125px;width:360px;height:138px}.s-cover .brick-b{position:absolute;right:405px;top:105px;width:230px;height:112px;background:var(--yellow)}
+.s-thesis .content{position:absolute;left:98px;right:98px;top:165px;bottom:88px;display:grid;grid-template-columns:1.1fr .9fr;gap:38px}.s-thesis .statement{padding:60px}.s-thesis .statement h2{margin:28px 0 38px}.s-thesis .statement strong{color:var(--indigo)}.s-thesis .visual{position:relative;background:var(--indigo);overflow:hidden}.s-thesis .visual img{position:absolute;width:730px;left:50%;top:49%;transform:translate(-50%,-50%);filter:drop-shadow(18px 24px 16px rgba(0,0,0,.3))}.s-thesis .visual .spark:nth-child(2){left:95px;top:120px}.s-thesis .visual .spark:nth-child(3){right:100px;bottom:140px}
+.s-four .intro{position:absolute;left:96px;top:150px;width:1250px}.s-four .grid{position:absolute;left:96px;right:96px;top:385px;bottom:75px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.s-four .card{padding:34px;display:flex;flex-direction:column}.s-four .num{font-size:88px;font-weight:900;line-height:.8;color:var(--indigo)}.s-four h3{font-size:34px;margin:30px 0 17px}.s-four p{font-size:23px;line-height:1.35;color:var(--muted)}.s-four .card:nth-child(2){background:var(--yellow)}.s-four .card:nth-child(3){background:var(--pink)}
+.s-steps .intro{position:absolute;left:96px;top:145px;width:980px}.s-steps .track{position:absolute;left:100px;right:100px;top:420px;height:360px;display:grid;grid-template-columns:repeat(4,1fr);gap:34px}.s-steps .step{position:relative;padding:42px 30px 25px;border:3px solid #fff;border-radius:10px;background:#1c1b23}.s-steps .step:after{content:"→";position:absolute;right:-33px;top:130px;color:var(--yellow);font-size:50px;font-weight:900;z-index:3}.s-steps .step:last-child:after{display:none}.s-steps .coin{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:var(--yellow);color:var(--ink);font-size:30px;font-weight:900;box-shadow:inset 0 -10px 0 #d2aa00,0 0 0 5px #fff}.s-steps h3{font-size:30px;margin:32px 0 14px}.s-steps p{font-size:22px;line-height:1.35;color:#aaa6b0}.s-steps .note{position:absolute;left:100px;bottom:110px;font-size:26px;color:var(--pink)}
+.s-compare .intro{position:absolute;left:96px;top:148px}.s-compare .columns{position:absolute;left:96px;right:96px;top:350px;bottom:80px;display:grid;grid-template-columns:1fr 1fr;gap:26px}.s-compare .column{padding:38px}.s-compare .column.good{background:var(--pink);box-shadow:10px 10px 0 var(--yellow)}.s-compare h3{font-size:44px;margin-bottom:26px}.s-compare ul{list-style:none;padding:0;display:grid;gap:19px}.s-compare li{display:grid;grid-template-columns:38px 1fr;gap:15px;font-size:25px;line-height:1.25}.s-compare li b{font-size:25px;color:var(--indigo)}
+.s-evidence .intro{position:absolute;left:96px;top:145px}.s-evidence .board{position:absolute;left:96px;right:96px;top:335px;bottom:82px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}.s-evidence .big{padding:40px}.s-evidence .metric{font-size:168px;line-height:.82;font-weight:900;color:var(--indigo)}.s-evidence .metric-label{margin:30px 0 42px;font-size:30px;font-weight:700}.s-evidence .bar{height:64px;border:3px solid var(--ink);background:#fff}.s-evidence .bar span{display:block;width:78%;height:100%;background:var(--yellow)}.s-evidence .notes{display:grid;grid-template-rows:1fr 1fr;gap:22px}.s-evidence .note-card{padding:34px}.s-evidence .note-card h3{font-size:31px;margin-bottom:15px}.s-evidence .note-card p{font-size:23px;line-height:1.35;color:var(--muted)}
+.s-check .intro{position:absolute;left:96px;top:145px;width:1050px}.s-check .list{position:absolute;left:96px;right:96px;top:365px;bottom:83px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.s-check .item{display:flex;align-items:center;gap:25px;padding:25px 30px;border:3px solid var(--ink);border-radius:8px;background:#fff;font-size:28px;font-weight:700}.s-check .box{width:48px;height:48px;flex:0 0 auto;border:4px solid var(--indigo);background:var(--yellow);position:relative}.s-check .box:after{content:"✓";position:absolute;left:7px;top:-10px;font-size:48px;font-weight:900;color:var(--indigo)}
+.s-close .center{position:absolute;inset:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.s-close .hammer{width:430px;margin-bottom:28px;filter:drop-shadow(20px 24px 16px rgba(0,0,0,.3))}.s-close .sticker{font-size:116px}.s-close p{margin-top:42px;color:#c6c2ca;font-size:30px}.s-close .spark.one{left:250px;top:310px}.s-close .spark.two{right:255px;bottom:260px}.s-close .spark.three{right:330px;top:170px;width:14px;height:14px}
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+  <section class="slide pink s-cover">
+    <div class="stud-field"></div><div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span>01 / 08</span></div>
+    <div class="brick brick-a"></div><div class="brick brick-b"></div>
+    <div class="copy"><div class="kicker">A little space for big ideas</div><h1 class="display sticker">Build the<br>impossible.</h1><p>A tactile presentation system for ideas that should feel inventive, dimensional, and ready to make.</p></div>
+    <img class="hammer" src="assets/forge-hammer.png" alt="Brick-built toy hammer">
+  </section>
+  <section class="slide s-thesis">
+    <div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span class="page">02 / 08</span></div>
+    <div class="content"><div class="panel statement"><div class="kicker">The core idea</div><h2 class="section-title">Make the thinking feel <strong>buildable.</strong></h2><p class="body">Pair one decisive statement with a tangible object, clear frame, or concrete next move.</p></div><div class="panel visual"><img src="assets/forge-crest.webp" alt="Lego Forge crest"><span class="spark"></span><span class="spark"></span></div></div>
+  </section>
+  <section class="slide s-four">
+    <div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span class="page">03 / 08</span></div>
+    <div class="intro"><div class="kicker">A four-part system</div><h2 class="section-title">Balance what people see with what they can build.</h2></div>
+    <div class="grid"><div class="panel card"><div class="num">01</div><h3>Recognition</h3><p>The silhouette and color story read in one glance.</p></div><div class="panel card"><div class="num">02</div><h3>Structure</h3><p>Connections carry weight without hidden wishful thinking.</p></div><div class="panel card"><div class="num">03</div><h3>Assembly</h3><p>Each step creates a stable object the builder can hold.</p></div><div class="panel card"><div class="num">04</div><h3>Sourcing</h3><p>Real parts and repeatable choices keep the idea producible.</p></div></div>
+  </section>
+  <section class="slide dark s-steps">
+    <div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span class="page">04 / 08</span></div>
+    <div class="intro"><div class="kicker" style="color:var(--yellow)">The build sequence</div><h2 class="section-title">Place one stable idea at a time.</h2></div>
+    <div class="track"><div class="step"><div class="coin">1</div><h3>Frame</h3><p>Choose the problem and define the finished silhouette.</p></div><div class="step"><div class="coin">2</div><h3>Anchor</h3><p>Build a rigid core before decorative surfaces.</p></div><div class="step"><div class="coin">3</div><h3>Layer</h3><p>Add detail in small, connected subassemblies.</p></div><div class="step"><div class="coin">4</div><h3>Prove</h3><p>Test the weak point and revise the instructions.</p></div></div>
+    <p class="note">A good sequence is part of the product, not documentation added later.</p>
+  </section>
+  <section class="slide s-compare">
+    <div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span class="page">05 / 08</span></div>
+    <div class="intro"><div class="kicker">Before / after</div><h2 class="section-title">Turn fragile complexity into visible progress.</h2></div>
+    <div class="columns"><div class="panel column"><h3>Hard to build</h3><ul><li><b>×</b><span>Long runs of loose parallel pieces</span></li><li><b>×</b><span>Support arrives many steps later</span></li><li><b>×</b><span>The model leans before it is complete</span></li><li><b>×</b><span>Decoration hides structural mistakes</span></li></ul></div><div class="panel column good"><h3>Ready to build</h3><ul><li><b>✓</b><span>Connected modules after every step</span></li><li><b>✓</b><span>Support is integrated from the start</span></li><li><b>✓</b><span>Weight resolves into a deep, stable base</span></li><li><b>✓</b><span>Finish pieces come after the stress test</span></li></ul></div></div>
+  </section>
+  <section class="slide s-evidence">
+    <div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span class="page">06 / 08</span></div>
+    <div class="intro"><div class="kicker">Evidence board</div><h2 class="section-title">Make the proof as legible as the claim.</h2></div>
+    <div class="board"><div class="panel big"><div class="metric">78%</div><div class="metric-label">of the design is carried by one structural spine</div><div class="bar"><span></span></div></div><div class="notes"><div class="panel note-card"><h3>What changed</h3><p>The base deepened, rear bracing shortened the lever arm, and each course locks before the next begins.</p></div><div class="panel note-card"><h3>What to test</h3><p>Tip resistance, connection stress, part availability, and whether a new builder can follow the sequence.</p></div></div></div>
+  </section>
+  <section class="slide pink s-check">
+    <div class="stud-field"></div><div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span>07 / 08</span></div>
+    <div class="intro"><div class="kicker">Workshop checklist</div><h2 class="section-title">Ready means more than rendered.</h2></div>
+    <div class="list"><div class="item"><span class="box"></span><span>Readable from across the room</span></div><div class="item"><span class="box"></span><span>Stable before decoration</span></div><div class="item"><span class="box"></span><span>Supported at the real load points</span></div><div class="item"><span class="box"></span><span>Buildable in connected modules</span></div><div class="item"><span class="box"></span><span>Sourced with real part numbers</span></div><div class="item"><span class="box"></span><span>Tested by someone new</span></div></div>
+  </section>
+  <section class="slide dark s-close">
+    <div class="topline"><div class="brand"><img src="assets/forge-hammer.png" alt=""><span>Lego Forge</span></div><span class="page">08 / 08</span></div>
+    <span class="spark one"></span><span class="spark two"></span><span class="spark three"></span>
+    <div class="center"><img class="hammer" src="assets/forge-hammer.png" alt="Brick-built toy hammer"><h2 class="sticker">Make it real.</h2><p>One idea. One stable connection. Then the next.</p></div>
+  </section>
+</deck-stage>
+</body>
+</html>
