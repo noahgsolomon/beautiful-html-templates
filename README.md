@@ -114,7 +114,7 @@ All 36 templates. Three slides per template (cover · mid-deck · later) to give
   <img src="./screenshots/lego-forge-8.png" width="32.5%" alt="Lego Forge — slide 8" />
 </p>
 
-> A playful brick-built workshop: pink stud fields, ink-blue outlines, yellow sparks, product renders, and chunky toy typography.
+> Lego Forge's dark product UI: near-black canvas, charcoal render stages, precise control bars, colorful icons, and tactile raised actions.
 
 ### [Neo-Grid Bold](./templates/neo-grid-bold/)
 

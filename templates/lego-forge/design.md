@@ -2,32 +2,35 @@
 
 ## Character
 
-Lego Forge feels like a tidy toy workshop rather than a children's worksheet. It combines real product-render polish with the directness of an instruction manual: square panels, obvious hierarchy, tactile studs, and bright color used with discipline.
+Lego Forge feels like a professional model viewer with the tactility of a toy workshop. The default canvas is dark and restrained: near-black page, charcoal model stages, thin gray borders, compact control bars, colorful icons, and a few raised action buttons.
 
 ## Palette
 
-- Paper `#FFF9FC` — warm white canvas
-- Workshop pink `#F2A3CF` — large fields and friendly emphasis
-- Hot pink `#FF5FA8` — small highlights
-- Spark yellow `#FFE65A` — active states, rules, sparks
-- Handle indigo `#30258E` — outlines and deep contrast
-- Ink `#111116` — body copy and dark stages
+- Paper `#0A0A0A` — page canvas
+- Chrome `#151515` — toolbars and quiet panels
+- Stage `#272D37` — softly lit product-viewer surface
+- Line `#383838` — borders and separators
+- Blue `#638BFF` — primary actions and model icons
+- Purple `#BB88FF` — parts, layers, and secondary accents
+- Yellow `#FFCF00` — selected tabs and box/build accents
+- Mint `#45DA8B` — success and completion
 
-Use one dominant accent per slide. Yellow usually marks the key idea; pink carries atmosphere; indigo supplies structure.
+Color belongs to actions, statuses, icons, and the object being discussed. Large surfaces stay neutral.
 
 ## Type
 
 Outfit is bundled locally. Headlines use 800–900 weight with tight tracking and compact line-height. Body copy stays generous and readable. Small labels are uppercase, tracked, and bold.
 
-Sticker headlines use white fill, an indigo outline, and a yellow outer edge. Reserve them for covers, section breaks, and final statements.
+Display headlines are white, compact, and direct. Avoid outlined sticker lettering inside content decks; that belongs to the consumer logo, not the product interface.
 
 ## Shapes
 
-- Corners: 4–12px; avoid overly soft product-card radii.
-- Rules: 2–4px ink or indigo.
-- Studs: circular highlights with a darker lower edge, arranged on an 84px grid.
-- Bricks: rectangular modules with visible seams and optional top studs.
-- Sparks: small yellow squares or diamonds around moments of emphasis.
+- Corners: 4–5px.
+- Rules: 1px gray separators.
+- Toolbars: 60–72px high, grouped controls, selected-state underline.
+- Neutral buttons: dark face, gray border, subtle 3px lower edge.
+- Primary buttons: blue, violet, or mint face with a darker 4px bottom edge.
+- Icons: single-color line icons, usually blue, purple, yellow, or muted gray.
 
 ## Layouts
 
@@ -35,7 +38,7 @@ The template includes eight reusable patterns: brand cover, framing statement, f
 
 ## Imagery
 
-Use isolated product renders on clean paper or near-black backgrounds. Give objects a soft ground shadow. Avoid generic AI illustration and unrelated stock photography. The included hammer and crest are approved Lego Forge assets.
+Use isolated product renders on the canonical charcoal radial stage (`#454D5A` center to `#1A1E26` edge). Give objects a long, soft ground shadow. Avoid generic AI illustration and unrelated stock photography. The included hammer and crest are approved Lego Forge assets.
 
 ## Motion
 
