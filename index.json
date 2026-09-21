@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T19:26:27.767Z",
-  "template_count": 35,
+  "generated_at": "2026-09-21T18:33:07.241Z",
+  "template_count": 36,
   "templates": [
     {
       "slug": "8-bit-orbit",
@@ -533,6 +533,48 @@
       "best_for": "Anything that should feel organic, considered, and grown-up: sustainability and wellness brands, outdoor / nature products, wineries and restaurants, literary or arts decks, advisory deliverables, bilingual EN/CN reports. Also a calm, distinctive choice for tech, research, or business decks that want patience over urgency.",
       "avoid_for": "Decks that need neon energy or rapid-fire pop — the forest-green canvas and Playfair serif commit to a slow, classical voice.",
       "slide_count": 12
+    },
+    {
+      "slug": "lego-forge",
+      "name": "Lego Forge",
+      "tagline": "A playful brick-built workshop: pink surfaces, ink-blue outlines, yellow sparks, and chunky toy typography.",
+      "mood": [
+        "playful",
+        "tactile",
+        "inventive",
+        "bold",
+        "workshop"
+      ],
+      "occasion": [
+        "learning deck",
+        "creative pitch",
+        "product concept",
+        "maker project",
+        "workshop",
+        "brand story"
+      ],
+      "tone": [
+        "optimistic",
+        "hands-on",
+        "graphic",
+        "clear"
+      ],
+      "formality": "medium-low",
+      "density": "medium",
+      "scheme": "mixed",
+      "best_for": [
+        "creative education",
+        "physical products",
+        "playful strategy",
+        "design systems",
+        "maker businesses"
+      ],
+      "avoid_for": [
+        "solemn memorials",
+        "traditional legal documents",
+        "dense financial reporting"
+      ],
+      "slide_count": 8
     },
     {
       "slug": "long-table",
